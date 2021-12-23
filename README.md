@@ -8,7 +8,7 @@ UI was developed using Vue.js
 <ul>
     <li>Clone the repository and open index.html</li>
     <li>This project can also run on the server. Download and enable live server on VS Code. Then open the cloned repository and click "Go Live" on the bottom right corner to run on a local host.
-    ![Alt text](./live_server.png?raw=true "Title")
     </li>
+    <img src="./live_server.png">
 </ul>
 
