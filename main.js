@@ -331,8 +331,9 @@ let app = Vue.createApp({
                 var b = this.copy(board);
                 var move = available[i];
                 b[Math.floor(move / 19)][move % 19] = -1;
-                var lst = this.live_4(Math.floor(move / 19), move % 19, -1, b);
-                live = live.concat(lst);
+                if (this.live_4(Math.floor(move / 19), move % 19, -1, b)) {
+                    live.push(move);
+                }
             }
             if (live.length != 0) {
                 console.log("ai live 4 next");
@@ -349,7 +350,9 @@ let app = Vue.createApp({
                 var b = this.copy(board);
                 var move = available[i];
                 b[Math.floor(move / 19)][move % 19] = 1;
-                live_opponent = live_opponent.concat(this.live_4(Math.floor(move / 19), move % 19, 1, b));
+                if (this.live_4(Math.floor(move / 19), move % 19, 1, b)) {
+                    live_opponent.push(move);
+                }
             }
 
             if (live_opponent.length != 0) {
@@ -435,8 +438,6 @@ let app = Vue.createApp({
 
 
         live_4(i, j, player, board) {
-            var available = [];
-            
             //horizontal
             var limit = Math.min(18, j + 3);
             var count = 0;
@@ -449,8 +450,7 @@ let app = Vue.createApp({
                 if (count == 4) {
                     if (k > 3 && (board[i][k - 4] == 0) && k < 18 && (board[i][k + 1] == 0)) {
                         console.log("horizontal");
-                        available = available.concat([i * 19 + k - 4, i * 19 + k + 1, i * 19 + j]);
-                        break;
+                        return true;
                     }
                 }
             }
@@ -467,8 +467,7 @@ let app = Vue.createApp({
                 if (count == 4) {
                     if (k > 3 && (board[k - 4][j] == 0) && k < 18 && (board[k + 1][j] == 0)) {
                         console.log("vertical");
-                        available = available.concat([(k - 4) * 19 + j, (k + 1) * 19 + j, i * 19 + j]);
-                        break;
+                        return true;
                     }
                 }
             }
@@ -489,8 +488,7 @@ let app = Vue.createApp({
                     var max = Math.max(i - lower + 1, j - lower + 1);
                     if (min >= 0 && (board[i - lower - 4][j - lower - 4] == 0) && max <= 18 && (board[i - lower + 1][j - lower + 1] == 0)) {
                         console.log("diagonal \\");
-                        available = available.concat([(i - lower - 4) * 19 + j - lower - 4, (i - lower + 1) * 19 + j - lower + 1, i * 19 + j]);
-                        break;
+                        return true;
                     }
                 }
                 lower--;
@@ -512,14 +510,13 @@ let app = Vue.createApp({
                     var max = Math.max(i - lower - 1, j - lower + 1);
                     if (min >= 0 && (board[i + lower + 4][j - lower - 4] == 0) && max <= 18 && (board[i + lower - 1][j - lower + 1] == 0)) {
                         console.log("diagonal /");
-                        available = available.concat([(i + lower + 4) * 19 + j - lower - 4, (i + lower - 1) * 19 + j - lower + 1, i * 19 + j]);
-                        break;
+                        return true;
                     }
                 }
                 lower--;
             }
 
-            return available;
+            return false;
             
         },
         
