@@ -48,11 +48,9 @@ let app = Vue.createApp({
     },
     methods: {
         changeColor(i, j, player, event) {
-            console.log("running: ", this.running, this.move_n);
             if (this.game_ended || this.running) {
                 return;
             }
-            console.log("pass");
            
             // if no stones have been placed on this spot
             if (this.board[i][j] == 0) {
@@ -76,9 +74,6 @@ let app = Vue.createApp({
                     this.ai_move(this.board);     
                     this.running = false;  
                 }, 0);
-
-                console.log("after:", this.running, this.move_n);
-                console.log(" ")
             }
         },
         transpose(matrix) {
