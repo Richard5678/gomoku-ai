@@ -1,0 +1,104 @@
+.box {
+    height: 30px;
+    width: 30px;
+
+}
+.box2 {
+    height: 26px;
+    width: 26px;
+    margin: 1px;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.box3 {
+    height: 26px;
+    width: 26px;
+    margin:1px;
+    background-color: white;
+    border-color: black;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+[v-cloak] {
+    display: none;
+}
+
+.vertical-l{
+    width: 1px; 
+    background-color: black;
+    height: 100%; 
+    float: left; 
+}
+
+.horizontal-l{
+    width: 540px; 
+    background-color: black; 
+    height: 1px;
+}
+
+.grid_lines{
+    position: absolute; 
+    margin-top: 15px; 
+    margin-left: 15px;
+}
+
+.horizontal {
+    display: flex;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.win_prob {
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    width: 400px;
+    height: 60px;
+    background-color: #9cbab4;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.win_prob_fill {
+    width: 50%;
+    height: 100%;
+    background-color:#009579;
+}
+
+.win_prob_white {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+.win_prob_black {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+.win_prob_title {
+    transform: translateY(20%);
+    font-size: 30px;
+}
+
+
+.half-circle {
+    margin-top:13px;
+    margin-left:13px;
+    border-right: 0;
+    border-bottom: 0;
+    width: 8px;
+    height: 8px;
+    background-color: skyblue;
+    border-bottom-right-radius: 10px;
+    border: 1px solid gray;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <div class="horizontal">
+                <div id="board" style="display: inline-block; position: relative;">
+                    <div class="grid_lines">
+                        <div class="horizontal-l"></div>
+                        <div v-for="i in board_width - 1" class="horizontal-l" style="margin-top:29px;"></div>
+                    </div>
+                    <div class="grid_lines horizontal">
+                        <div class="vertical-l" style="height: 540px;"></div>
+                        <div v-for="i in board_length - 1" class="vertical-l" style="height: 540px; margin-left:29px;"></div>
+                    </div>
+                    <div v-for="i in dots">
+                        <div v-for="j in dots" class="dot" :style="get_dot_style(i, j)"></div>
+                    </div>
+                    <div style="display: flex; position: relative;" v-for="(i, index) in board_width">
+                        <div v-for="(j, idx) in board_width" >
+                            <div v-if="!running" @click="changeColor(index, idx, player)" :class="get_class(board[index][idx])">
+                                <div v-if="prev_m(index, idx)" class="half-circle"></div>
+                            </div>
+                            <div v-else="!running" :class="get_class(board[index][idx])">
+                                <div v-if="prev_m(index, idx)" class="half-circle"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div style="text-align: center; margin-left: 10%; margin-top:10%;">
+                    <button @click="reset" style="height: 50px; width: 100px; font-size: 20px;">reset</button>
+                    <button @click="undo" style="height: 50px; width: 100px; font-size: 20px; margin-left: 20px;">undo</button>
+                    <div style="margin-top:10%; font-size: 30px;"v-show="has_won">{{ player_won }} won!</div>
+                    <div style="font-size: 30px;"v-if="draw">draw!</div>
+                    <div style="display: flex; margin-top: 100px;">
+                        <div class="win_prob_title">Black</div>
+                        <div class="win_prob">
+                            <div class="win_prob_fill"></div>
+                            <span class="win_prob_black">{{win_prob}}%</span>
+                            <span class="win_prob_white">{{100 - win_prob}}%</span>
+                        </div>
+                        <div class="win_prob_title">White</div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="numjs/dist/numjs.min.js"></script>
+        <script src="main.js"></script>
+        <script>
+            
+        </script>
+    </body>
+</html>
