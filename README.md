@@ -12,3 +12,5 @@ UI was developed using Vue.js
     <img src="./live_server.png">
 </ul>
 
+An article on tree search and lessons I have learned implementing this project can be found <a href="https://richardfan.herokuapp.com/project/gomoku/en">here</a>.
+
